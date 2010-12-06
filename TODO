@@ -1,0 +1,118 @@
+BIG PICTURE MILESTONES
+
+- An Introduction to General Systems Thinking, Weinberg
+  * Make world a box   MOSTLY
+  * Browse & Edit code in the environment
+    . text box                 DONE
+    . fix text rendering 
+    . text layout
+    . text editor
+    . introspection services
+  * Run a simple sysdyn model
+    . a system
+    . line-graph
+      . plot axis               DONE
+      . plot simple data series DONE
+      . logger
+    . text entry
+    . math display / entry 
+    . animation / process semantics
+  * Run a networked model
+  * Candy
+    . Round cornered shaded box  
+      . Basic                       DONE
+      . Outline 
+      . Try round corners w/ textures / nurbs / beziers ?
+      . Keep radius constant with size of box ?
+  * Build a subject model
+  * Give serious consideration to a drawing DSL that can _compile_ down to OpenGL et al.
+  * Implement: http://worrydream.com/GesturalZoomAndPan/
+  * Integrate webkit ?
+  
+  * sizing/scaling/transforms/text-rendering 
+  
+  * line-widths should scale with zooming ?
+  
+- Causality, Pearl
+  * get my book back!
+
+- Pure fun
+  * LOOP language
+
+--
+
+
+
+CORE
+
+* Decide on an object semantics
+* Decide on an animation/time/process semantics
+* what are abstract vectors and linear transformations that they replace coordinates, matrices and quaternions?
+
+
+--
+BUGS
+
+* Posting unnecessary redraws on mouse move
+
+
+--
+* a function to take a box and get an id
+* a function to take an id and get a box
+* wtf the difference between setq and setf ?
+* (the-world *globals*) should be a box, not a list
+* unified mechanism for picking things out of arrays/lists/hashtables etc ?
+
+--
+
+* object selection  DONE
+
+* object dragging   DONE
+
+* text editor
+
+* Get text running under OpenGL using freetype+ftgl  DONE
+
+* Write a macro to convert a list of arguments to a set of function arguments
+
+* Get libglug running under CFFI as a test case
+
+* Mouse on edge of screen scrolls display
+
+* Decide on what 'class' and 'object' means:
+  . For me
+  . Within the context of phlo
+  . Am I prototype system ?
+  . If I am -> write own, are there others I can use ?
+
+* Write a method that can take any class or object and return it as a list as prototyped in mzphlo
+
+* Write a method that can take a list as prototyped in mzphlo and return it as a class or object
+
+* Build infrastructure
+  . build system
+  . cross-platform issues
+
+* Package cross platform depends
+  . cffi       -> Need for: Talk to platform libs
+                  Can lose: When we have own replacements for all platform libs.
+  . cl-opengl  -> Need for: Talk to graphics hardware
+                  Can lose: When we have open specs and a LOT of time.
+  . cl-ftgl    -> Need for: Rendering font data to the graphics hardware
+                  Can lose: When we have our own font renderer.
+  . freetype   -> Need for: Parsing platform font files into font data.
+                  Can lose: When we have our own font format, font parser
+                            and fonts.
+
+* Make diffs for depends:
+  . ftgl needed changes to compile under Leopard
+  . cl-opengl needed changes to run under mac GLUT as well as changes 
+    to make gl:select-buffer work
+
+* Classes should only instantiate data when that data is being used. So the idea is for e.g.
+  . a box can potentially have one or more of size, position, velocity, rotation 
+  . if a box is not using one of those it shouldn't be loaded down with them (at the very least 
+    from a users point view as this is not so much about optimizing the code for speed or memory
+    as much as it is a way of encapsulating complexity)
+  . this is maybe what draws me to so-called prototype object systems ? is there a relationship ?
+

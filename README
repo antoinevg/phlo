@@ -1,0 +1,40 @@
+README is for getting hte going    -*- mode: org; -*-
+
+
+READ: http://common-lisp.net/project/clbuild/
+      http://www.cliki.net/ASDF-Install
+
+* Install SBCL
+
+  sudo port install sbcl
+
+* Install SBCL packages using asdf-install
+  gpg  --recv-keys 0xF1DCE557E86007A0
+  gpg  --recv-keys 0x9E2F734EF57A448E
+  gpg  --recv-keys 0xFC001F4F13126769
+  sbcl
+  (require 'asdf)
+  (require 'asdf-install)
+  (asdf-install:install :cffi)
+  (asdf-install:install :cl-opengl)
+  
+* Install SBCL packages using clbuild
+  cabal install darcs    # Read: http://www.haskell.org/haskellwiki/Mac_OS_X
+  cd ~/.sbcl/site
+  darcs get http://common-lisp.net/project/clbuild/clbuild clbuild.darcs
+  cd ~/.sbcl/bin
+
+* Install ftgl deps
+  sudo port install freetype
+  sudo port install ftgl ???
+
+  cd ~/Projects/phlo/lisp/ffi/sources-ftgl
+  svn co https://ftgl.svn.sourceforge.net/svnroot/ftgl/trunk ftgl.svn
+  
+* Install lisp bindings for ftgl
+  cd ~/Projects/phlo/lisp/ffi/sources-ftgl
+
+
+* Rebuilding code when SBCL is upgraded:
+
+   find . -name "*.fasl" 
